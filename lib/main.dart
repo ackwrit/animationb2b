@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled1/detail.dart';
 import 'package:untitled1/model/Musique.dart';
 
 void main() {
@@ -89,16 +90,26 @@ class _MyHomePageState extends State<MyHomePage> {
       itemCount: allMorceau.length,
         gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,crossAxisSpacing: 10,mainAxisSpacing:20),
       itemBuilder: (context,index){
-          return Container(
-            height: 250,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              image: DecorationImage(
-                image: (allMorceau[index].image ==  null)?AssetImage("assets/images/indispo.jpg"):AssetImage(allMorceau[index].image!),
-                fit: BoxFit.fill
-              )
+          return InkWell(
+            child: Container(
+              height: 250,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  image: DecorationImage(
+                      image: (allMorceau[index].image ==  null)?AssetImage("assets/images/indispo.jpg"):AssetImage(allMorceau[index].image!),
+                      fit: BoxFit.fill
+                  )
+              ),
             ),
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(
+                  builder: (context){
+                    return detail(music: allMorceau[index],);
+                  }
+              ));
+            },
           );
+
       },
     );
   }
