@@ -53,10 +53,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   //Variable
   List<Musique> allMorceau = [
-    Musique(path: "assets/sons/14.Alibi.mp3", title: "Bonjour", artist: "Melanié",image:"assets/images/1d84dc7609a129e377cc38afdf38b9d064183853.jpg"),
-    Musique(path: "assets/sons/13.GoodnightJacks.mp3", title: "Big Boss", artist: "Djino",genre: ["rap"]),
-    Musique(path: "assets/sons/14.Alibi.mp3", title: "Love tender", artist: "Dune",image: "assets/images/07.jpg"),
-    Musique(path: "assets/sons/18.LetPoirotWork.mp3", title: "Hymn", artist: "Léa",image: "assets/images/36morning_banana_oatmeal.jpg"),
+    Musique(path: "https://firebasestorage.googleapis.com/v0/b/firstapplicationb2b.appspot.com/o/09.AbuSimbel.mp3?alt=media&token=0be92b61-6412-4578-89e6-0178d1f6e550", title: "Bonjour", artist: "Melanié",image:"assets/images/1d84dc7609a129e377cc38afdf38b9d064183853.jpg"),
+    Musique(path: "https://firebasestorage.googleapis.com/v0/b/firstapplicationb2b.appspot.com/o/14.Alibi.mp3?alt=media&token=e0b8709b-080c-457a-abe6-42fbf605b1f5", title: "Big Boss", artist: "Djino",genre: ["rap"]),
+    Musique(path: "https://firebasestorage.googleapis.com/v0/b/firstapplicationb2b.appspot.com/o/16.Inheritance.mp3?alt=media&token=0503ff59-a149-405d-9182-4b5504da8277", title: "Love tender", artist: "Dune",image: "assets/images/07.jpg"),
+    Musique(path: "https://firebasestorage.googleapis.com/v0/b/firstapplicationb2b.appspot.com/o/21.%20IWasn'tThinking.mp3?alt=media&token=5fed8689-7351-4f1e-8569-f5006be3b720", title: "Hymn", artist: "Léa",image: "assets/images/36morning_banana_oatmeal.jpg"),
 
   ];
 

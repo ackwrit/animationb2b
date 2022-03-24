@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled1/model/Musique.dart';
 
@@ -17,6 +20,67 @@ class detailState extends State<detail>{
 
   //Variable
   double timeLine =0.0;
+  statut lecture = statut.stopped;
+  AudioPlayer audioPlayer = AudioPlayer();
+  Duration position = Duration(seconds: 0);
+  double volumeSound = 0.5;
+  late StreamSubscription positionStream;
+  late StreamSubscription stateStream;
+  Duration duree = Duration(seconds: 0);
+
+
+
+  //////
+
+
+
+
+  //Methode
+  configuration(){
+    audioPlayer.setUrl(widget.music.path);
+    positionStream = audioPlayer.onAudioPositionChanged.listen((event) {
+      setState(() {
+        position = event;
+      });
+    });
+    audioPlayer.onDurationChanged.listen((event) {
+      setState(() {
+        duree = event;
+      });
+    });
+
+    stateStream = audioPlayer.onPlayerStateChanged.listen((event) {
+      if(event == statut.playing){
+        setState(() async{
+          duree = audioPlayer.getDuration() as Duration;
+
+        });
+      }
+      else if(event == statut.stopped){
+        setState(() {
+          lecture = statut.stopped;
+        });
+      }
+    },onError: (message){
+      setState(() {
+        lecture = statut.stopped;
+        position = Duration(seconds: 0);
+        duree = Duration(seconds: 0);
+      });
+    }
+    );
+
+
+  }
+
+
+
+
+
+
+
+
+  ///
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -121,4 +185,12 @@ class detailState extends State<detail>{
     );
   }
 
+}
+
+enum statut{
+  playing,
+  stopped,
+  paused,
+  rewind,
+  forward
 }
