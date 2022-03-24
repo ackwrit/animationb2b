@@ -35,7 +35,7 @@ class detailState extends State<detail>{
 
 
 
-  //Methode
+  //Methode de configuration
   configuration(){
     audioPlayer.setUrl(widget.music.path);
     positionStream = audioPlayer.onAudioPositionChanged.listen((event) {
@@ -71,6 +71,21 @@ class detailState extends State<detail>{
     );
 
 
+  }
+
+
+  //La methode de lecture
+  Future play() async {
+    await audioPlayer.play(widget.music.path,volume: volumeSound,position: position);
+  }
+
+
+
+  //La méthode pour le Stop
+
+  Future pause() async
+  {
+    await audioPlayer.pause();
   }
 
 
@@ -148,11 +163,25 @@ class detailState extends State<detail>{
                 icon: Icon(Icons.fast_rewind_rounded)
             ),
 
-            IconButton(
+            (lecture == statut.stopped)?IconButton(
                 onPressed: (){
+                  setState(() {
+                    lecture = statut.paused;
+                    play();
+                  });
 
                 },
                 icon: Icon(Icons.play_arrow,size: 40,)
+            )
+            :IconButton(
+                onPressed: (){
+                  setState(() {
+                    lecture = statut.stopped;
+                    pause();
+                  });
+
+                },
+                icon: Icon(Icons.pause,size: 40,)
             ),
 
             IconButton(
