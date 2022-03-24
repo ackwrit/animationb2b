@@ -207,8 +207,8 @@ class detailState extends State<detail>{
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(position.toString()),
-            Text(duree.toString()),
+            Text(position.toString().substring(2,7)),
+            Text(duree.toString().substring(2,7)),
           ],
         ),
 
