@@ -76,16 +76,17 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),*/
-      body: Container(
-        padding: EdgeInsets.all(20),
-        child: Stack(
-          children: [
-            //fond(),
-            bodyPage(),
-          ],
-        ) ,
-
+      body: Stack(
+        children: [
+          fond(),
+          Container(
+            child:   bodyPage(),
+            padding: EdgeInsets.all(20),
+          ),
+        ],
       ),
+
+
       backgroundColor: Colors.amber,
 
       // This trailing comma makes auto-formatting nicer for build methods.
@@ -97,11 +98,15 @@ class _MyHomePageState extends State<MyHomePage> {
     return ClipPath(
       clipper: custom(),
       child: Container(
-        height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        color: Colors.black,
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/36morning_banana_oatmeal.jpg"),
+            fit: BoxFit.fill
+          )
+        ),
       ),
-
     );
   }
 
