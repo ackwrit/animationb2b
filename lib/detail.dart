@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled1/model/Musique.dart';
 
@@ -86,6 +87,15 @@ class detailState extends State<detail>{
   Future pause() async
   {
     await audioPlayer.pause();
+  }
+
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    configuration();
   }
 
 
@@ -194,17 +204,29 @@ class detailState extends State<detail>{
           ],
         ),
 
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(position.toString()),
+            Text(duree.toString()),
+          ],
+        ),
+
 
 
         //TimelIne
 
         Slider(
-            value: timeLine,
+            value: position.inSeconds.toDouble(),
+            max: (duree == null)?0.0:duree.inSeconds.toDouble(),
+            min: 0.0,
             activeColor: Colors.black,
             inactiveColor: Colors.red,
             onChanged: (value){
               setState(() {
-                timeLine = value;
+                Duration time = Duration(seconds: value.toInt());
+                position = time;
+                audioPlayer.play(widget.music.path,volume: volumeSound,position: position);
               });
             }
         )
