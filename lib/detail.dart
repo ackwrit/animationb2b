@@ -162,8 +162,14 @@ class detailState extends State<detail>{
 
         //Chanteur
         SizedBox(height: 20,),
+        AnimatedDefaultTextStyle(
+            child: Text("${widget.music.artist}"),
+            style: (lecture == statut.stopped)?TextStyle(fontSize: 20,color: Colors.black):TextStyle(fontSize:20,color: Colors.yellow,fontStyle: FontStyle.italic ),
+            duration: Duration(seconds: 3),
+          curve: Curves.easeIn,
+        ),
 
-        Text("${widget.music.artist}",style: TextStyle(fontSize: 20)),
+
 
 
         SizedBox(height: 20,),
