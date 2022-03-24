@@ -130,17 +130,23 @@ class detailState extends State<detail>{
         SizedBox(height: 20,),
 
         //Image
-        Container(
-          height: 250,
-          width: 450,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              image: DecorationImage(
-                  image: (widget.music.image ==  null)?AssetImage("assets/images/indispo.jpg"):AssetImage(widget.music.image!),
-                  fit: BoxFit.fill
-              )
-          ),
+        Hero(
+            tag: widget.music.title,
+            child:  AnimatedContainer(
+              curve: Curves.bounceInOut,
+              duration: Duration(seconds: 4),
+              height: (lecture== statut.stopped)?100:250,
+              width: (lecture== statut.stopped)?250:450,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  image: DecorationImage(
+                      image: (widget.music.image ==  null)?AssetImage("assets/images/indispo.jpg"):AssetImage(widget.music.image!),
+                      fit: BoxFit.fill
+                  )
+              ),
+            ),
         ),
+
         SizedBox(height: 20,),
 
         // Titre et album,

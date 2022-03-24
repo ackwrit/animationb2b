@@ -116,16 +116,22 @@ class _MyHomePageState extends State<MyHomePage> {
         gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,crossAxisSpacing: 10,mainAxisSpacing:20),
       itemBuilder: (context,index){
           return InkWell(
-            child: Container(
-              height: 250,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  image: DecorationImage(
-                      image: (allMorceau[index].image ==  null)?AssetImage("assets/images/indispo.jpg"):AssetImage(allMorceau[index].image!),
-                      fit: BoxFit.fill
-                  )
-              ),
+            child: Hero(
+                tag: allMorceau[index].title,
+                child: Container(
+                  height: 250,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      image: DecorationImage(
+                          image: (allMorceau[index].image ==  null)?AssetImage("assets/images/indispo.jpg"):AssetImage(allMorceau[index].image!),
+                          fit: BoxFit.fill
+                      )
+                  ),
+                ),
             ),
+
+
+
             onTap: (){
               Navigator.push(context, MaterialPageRoute(
                   builder: (context){
