@@ -229,7 +229,49 @@ class detailState extends State<detail>{
                 audioPlayer.play(widget.music.path,volume: volumeSound,position: position);
               });
             }
-        )
+        ),
+
+
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            IconButton(
+                onPressed: (){
+                  setState(() {
+                    if((volumeSound -0.5) >0){
+
+                      volumeSound = volumeSound - 0.5;
+
+                    }
+                    else
+                      {
+                        volumeSound =0;
+                      }
+                    audioPlayer.setVolume(volumeSound);
+                  });
+                },
+                icon: Icon(Icons.volume_down_rounded)),
+            IconButton(
+                onPressed: (){
+                  setState(() {
+                    if((volumeSound +0.5) < 1){
+
+                      volumeSound = volumeSound + 0.5;
+                    }
+                    else
+                    {
+                      volumeSound = 1;
+                    }
+                    audioPlayer.setVolume(volumeSound);
+                  });
+
+
+
+                },
+                icon: Icon(Icons.volume_up_rounded)
+            )
+          ],
+        ),
 
 
       ],

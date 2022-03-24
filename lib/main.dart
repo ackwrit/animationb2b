@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled1/custom.dart';
 import 'package:untitled1/detail.dart';
 import 'package:untitled1/model/Musique.dart';
 
@@ -70,18 +71,37 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
+      /*appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
-      ),
+      ),*/
       body: Container(
         padding: EdgeInsets.all(20),
-        child: bodyPage(),
+        child: Stack(
+          children: [
+            //fond(),
+            bodyPage(),
+          ],
+        ) ,
+
       ),
       backgroundColor: Colors.amber,
 
       // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+
+
+  Widget fond(){
+    return ClipPath(
+      clipper: custom(),
+      child: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        color: Colors.black,
+      ),
+
     );
   }
 
